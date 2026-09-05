@@ -22,13 +22,14 @@ router.post(
   async (req, res, next) => {
     try {
       const { name, email, password } = req.body;
-      const existing = await User.findOne({ email });
+      const normalizedEmail = String(email).trim().toLowerCase();
+      const existing = await User.findOne().where('email').equals(normalizedEmail);
 
       if (existing) {
         return res.status(409).json({ error: 'Email already in use' });
       }
 
-      const user = await User.create({ name, email, password });
+      const user = await User.create({ name, email: normalizedEmail, password });
       const token = signToken(user._id);
 
       return res.status(201).json({
@@ -51,7 +52,8 @@ router.post(
   async (req, res, next) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ email });
+      const normalizedEmail = String(email).trim().toLowerCase();
+      const user = await User.findOne().where('email').equals(normalizedEmail);
 
       if (!user || !(await user.comparePassword(password))) {
         return res.status(401).json({ error: 'Invalid credentials' });
