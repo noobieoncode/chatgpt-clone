@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Lab Academy</title>
+    <link rel="stylesheet" href="/home/runner/work/chatgpt-clone/chatgpt-clone/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <button id="mobileMenuBtn" class="icon-btn" aria-label="Open navigation">☰</button>
+      <h1>CSS Lab Academy</h1>
+      <div class="topbar-actions">
+        <div class="progress-inline" aria-live="polite">
+          <span>Progress</span>
+          <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="landing" class="landing" aria-labelledby="landingTitle">
+        <div class="landing-copy">
+          <p class="badge">Interactive CSS Laboratory</p>
+          <h2 id="landingTitle">Learn CSS by changing it.</h2>
+          <p>
+            Stop watching CSS tutorials. Change the code, see the result, and understand why it happened.
+          </p>
+          <div class="landing-actions">
+            <button id="startLearningBtn" class="btn primary">Start Learning</button>
+            <button id="exploreBtn" class="btn">Explore CSS</button>
+          </div>
+          <div class="feature-grid">
+            <article class="card"><h3>Live Preview</h3><p>Edit code and instantly see results.</p></article>
+            <article class="card"><h3>Data-Driven Lessons</h3><p>Structured lessons for modern CSS topics.</p></article>
+            <article class="card"><h3>Challenges & Quizzes</h3><p>Practice and reinforce concepts quickly.</p></article>
+          </div>
+        </div>
+        <div class="landing-demo card">
+          <h3>Instant Demo</h3>
+          <label for="quickCss">Try changing this CSS:</label>
+          <textarea id="quickCss" rows="7">.demo-box {
+  background: royalblue;
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+}
+</textarea>
+          <iframe id="quickPreview" title="Landing interactive demo preview"></iframe>
+        </div>
+      </section>
+
+      <section id="app" class="app hidden" aria-label="CSS learning app">
+        <aside id="sidebar" class="sidebar" aria-label="Lessons navigation">
+          <div class="sidebar-head">
+            <h2>CSS Topics</h2>
+            <input id="searchInput" type="search" placeholder="Search property, keyword, concept..." aria-label="Search CSS lessons" />
+          </div>
+          <nav id="courseFlow" class="course-flow" aria-label="Course progression"></nav>
+          <div id="categoryList" class="category-list"></div>
+        </aside>
+
+        <div class="content">
+          <section id="lessonPanel" class="card lesson-panel" aria-live="polite"></section>
+
+          <section class="card">
+            <h3>Playground</h3>
+            <div class="playground-layout">
+              <div class="editor-wrap">
+                <div class="editor-head"><span>HTML</span><button id="copyHtml" class="btn tiny">Copy HTML</button></div>
+                <div class="editor-shell">
+                  <pre id="htmlLines" class="lines" aria-hidden="true"></pre>
+                  <textarea id="htmlEditor" class="editor" spellcheck="false" aria-label="HTML editor"></textarea>
+                </div>
+              </div>
+              <div class="editor-wrap">
+                <div class="editor-head">
+                  <span>CSS</span>
+                  <div class="inline-tools">
+                    <select id="propertyInsert" aria-label="Insert CSS property"></select>
+                    <button id="insertProperty" class="btn tiny">Insert</button>
+                    <button id="copyCss" class="btn tiny">Copy CSS</button>
+                  </div>
+                </div>
+                <div class="editor-shell">
+                  <pre id="cssLines" class="lines" aria-hidden="true"></pre>
+                  <textarea id="cssEditor" class="editor" spellcheck="false" aria-label="CSS editor"></textarea>
+                </div>
+                <p id="cssError" class="error" role="status"></p>
+              </div>
+            </div>
+            <div class="controls">
+              <button id="runCode" class="btn primary">Run / Update</button>
+              <button id="resetCode" class="btn">Reset</button>
+              <button id="fullscreenPreview" class="btn">Fullscreen Preview</button>
+              <label for="viewportRange">Viewport</label>
+              <input id="viewportRange" type="range" min="280" max="1200" value="900" />
+              <button class="btn tiny viewport-btn" data-size="375">Mobile</button>
+              <button class="btn tiny viewport-btn" data-size="768">Tablet</button>
+              <button class="btn tiny viewport-btn" data-size="1024">Desktop</button>
+            </div>
+            <div class="preview-columns">
+              <div>
+                <h4>WITHOUT CSS</h4>
+                <iframe id="unstyledPreview" title="Unstyled preview"></iframe>
+              </div>
+              <div>
+                <h4>WITH CSS</h4>
+                <iframe id="styledPreview" title="Styled preview"></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section id="valueExplorer" class="card"></section>
+          <section id="boxModelLab" class="card"></section>
+          <section id="functionsLab" class="card"></section>
+          <section id="challengeLab" class="card"></section>
+          <section id="quizLab" class="card"></section>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="previewDialog">
+      <form method="dialog"><button class="btn tiny">Close</button></form>
+      <iframe id="dialogPreview" title="Fullscreen preview"></iframe>
+    </dialog>
+
+    <script src="/home/runner/work/chatgpt-clone/chatgpt-clone/script.js"></script>
+  </body>
+</html>
